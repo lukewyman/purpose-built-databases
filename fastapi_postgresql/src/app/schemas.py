@@ -1,3 +1,4 @@
+import uuid
 from pydantic import BaseModel
 
 
@@ -12,7 +13,7 @@ class ItemCreate(ItemBase):
 
 class Item(ItemBase):
     id: int
-    owner_id: int 
+    owner_id: uuid.UUID 
 
     class Config:
         orm_mode = True 
@@ -27,7 +28,7 @@ class UserCreate(UserBase):
 
 
 class User(UserBase):
-    id: int 
+    id: uuid.UUID
     is_active: bool 
     items: list[Item] = []
 
